@@ -26,6 +26,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .container {
@@ -101,6 +102,7 @@ nav a:hover, nav a.active {
     cursor: pointer;
     transition: all 0.2s ease;
     display: inline-block;
+    text-align: center;
 }
 
 .btn-primary:hover {
@@ -243,7 +245,7 @@ nav a:hover, nav a.active {
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
@@ -297,7 +299,7 @@ nav a:hover, nav a.active {
 
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
@@ -403,7 +405,7 @@ nav a:hover, nav a.active {
 
 /* FORM KONTAK INTERAKTIF */
 .contact-section {
-    padding: 60px 0;
+    padding: 40px 24px;
     background: var(--white);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
@@ -512,16 +514,20 @@ nav a:hover, nav a.active {
 /* TOAST NOTIFICATION */
 .toast {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: 400px;
+    margin: 0 auto;
     background-color: #10b981;
     color: white;
-    padding: 16px 28px;
+    padding: 16px 24px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     font-weight: 600;
     display: none;
     z-index: 2000;
+    text-align: center;
     animation: slideUp 0.3s ease;
 }
 
@@ -578,21 +584,157 @@ footer a:hover {
     margin-top: 25px;
 }
 
-/* RESPONSIVE */
+/* ==========================================
+   RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZED)
+   ========================================== */
+
+/* Tablet & Mobile Layout (Max-width: 768px) */
 @media (max-width: 768px) {
-    .hero-grid, .feature-grid, .form-grid {
+    .container {
+        padding: 0 16px;
+    }
+
+    /* Header Navigation */
+    header .header-content {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav {
+        width: 100%;
+        order: 3;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 18px;
+        white-space: nowrap;
+        justify-content: flex-start;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 30px 0;
+    }
+
+    .hero-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
     }
-    .form-group.full-width {
-        grid-column: span 1;
-    }
+
     .hero-text h1 {
         font-size: 2.2rem;
     }
-    .hero-media {
-        display: none;
+
+    .hero-text p {
+        margin: 0 auto 25px;
     }
-    nav ul {
-        display: none;
+
+    .hero-search-bar {
+        flex-direction: column;
+        border-radius: var(--radius-card);
+        padding: 16px;
+        gap: 12px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .search-item {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 8px;
+    }
+
+    .search-item:last-of-type {
+        border-bottom: none;
+    }
+
+    #btn-hero-search {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .hero-media {
+        scale: 0.9;
+    }
+
+    /* Section Headings */
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Feature Grid (Visi Misi) */
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 24px;
+    }
+
+    /* Form Kontak */
+    .contact-section {
+        padding: 24px 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .btn-submit, .btn-reset {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        display: block;
+    }
+
+    /* Footer */
+    footer .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    footer ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+/* Extra Small Mobile Devices (Max-width: 480px) */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        border-radius: 30px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
     }
 }

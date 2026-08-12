@@ -13,9 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- CSS External (Sudah disesuaikan) -->
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -29,7 +28,16 @@
                 </svg>
                 Fergie <span>Design</span>
             </div>
-            <nav>
+
+            <!-- Hamburger Button (Tampil di Mobile) -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Drawer -->
+            <nav id="navMenu">
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
                     <li><a href="#visi-misi">Visi & Misi</a></li>
@@ -37,8 +45,10 @@
                     <li><a href="#harga">Harga</a></li>
                     <li><a href="#kontak">Kontak</a></li>
                 </ul>
+                <a href="#kontak" class="btn-primary nav-cta">Konsultasi</a>
             </nav>
-            <a href="#kontak" class="btn-primary">Konsultasi</a>
+
+            <a href="#kontak" class="btn-primary desktop-cta">Konsultasi</a>
         </div>
     </header>
 
@@ -54,7 +64,6 @@
                         murni, UI/UX, dan branding berkualitas tinggi sejak 2022.
                     </p>
 
-                    <!-- Quick Search Pill Bar -->
                     <div class="hero-search-bar">
                         <div class="search-item">
                             <label for="hero-service-select">Layanan</label>
@@ -72,12 +81,10 @@
                                 <option>Fleksibel</option>
                             </select>
                         </div>
-                        <button id="btn-hero-search" class="btn-primary" style="padding: 12px 20px;">Cari
-                            Solusi</button>
+                        <button id="btn-hero-search" class="btn-primary">Cari Solusi</button>
                     </div>
                 </div>
 
-                <!-- Arch Shape Images -->
                 <div class="hero-media">
                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80"
                         alt="Coding" class="arch-card">
@@ -128,19 +135,15 @@
                     <h3>Visi Perusahaan</h3>
                     <p>
                         Menjadi studio desain terdepan yang mengedepankan orisinalitas, presisi visual, dan kreativitas
-                        murni—membuktikan bahwa karya luar biasa lahir dari *skill* serta pemahaman manusia sejati,
-                        bukan sekadar *prompt* AI generik.
+                        murni—membuktikan bahwa karya luar biasa lahir dari skill serta pemahaman manusia sejati.
                     </p>
                 </div>
                 <div class="feature-card" style="background: #fff8e6;">
                     <h3 style="color: #d97706;">Misi Perusahaan</h3>
                     <ul>
-                        <li>Menghadirkan identitas visual dan UI/UX otentik yang bebas dari kesan *skill issue* atau
-                            hasil generator AI pasaran.</li>
-                        <li>Menggabungkan estetika, fungsi, dan filosofi mendalam pada setiap piksel karya yang dibuat
-                            secara manual dan terukur.</li>
-                        <li>Membantu merek/bisnis tampil menonjol dengan karakter unik yang tak bisa ditiru secara
-                            instan oleh kecerdasan buatan.</li>
+                        <li>Menghadirkan identitas visual dan UI/UX otentik.</li>
+                        <li>Menggabungkan estetika, fungsi, dan filosofi mendalam.</li>
+                        <li>Membantu merek/bisnis tampil menonjol dengan karakter unik.</li>
                     </ul>
                 </div>
             </div>
@@ -168,8 +171,7 @@
                             <li>Estimasi: 1 - 2 Minggu</li>
                         </ul>
                     </div>
-                    <a href="#kontak" class="btn-primary btn-select-package" data-service="web"
-                        style="text-align: center;">Pilih Paket</a>
+                    <a href="#kontak" class="btn-primary btn-select-package" data-service="web">Pilih Paket</a>
                 </div>
 
                 <div class="pricing-card" style="border-color: var(--primary-blue);">
@@ -186,8 +188,7 @@
                             <li>Estimasi: 3 - 4 Minggu</li>
                         </ul>
                     </div>
-                    <a href="#kontak" class="btn-primary btn-select-package" data-service="web"
-                        style="text-align: center;">Pilih Paket</a>
+                    <a href="#kontak" class="btn-primary btn-select-package" data-service="web">Pilih Paket</a>
                 </div>
 
                 <div class="pricing-card">
@@ -205,7 +206,7 @@
                         </ul>
                     </div>
                     <a href="#kontak" class="btn-primary btn-select-package" data-service="konsultasi"
-                        style="text-align: center; background: #0f172a;">Konsultasi Khusus</a>
+                        style="background: #0f172a;">Konsultasi Khusus</a>
                 </div>
             </div>
         </section>

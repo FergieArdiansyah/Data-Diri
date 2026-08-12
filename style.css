@@ -48,7 +48,8 @@ header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 16px 0;
+    position: relative;
 }
 
 .logo {
@@ -111,6 +112,44 @@ nav a:hover, nav a.active {
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
+.nav-cta {
+    display: none;
+}
+
+/* HAMBURGER BUTTON */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-dark);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
 /* HERO SECTION */
 .hero {
     padding: 60px 0 40px;
@@ -134,7 +173,6 @@ nav a:hover, nav a.active {
 
 .hero-text h1 span {
     color: var(--primary-blue);
-    position: relative;
 }
 
 .hero-text p {
@@ -169,7 +207,7 @@ nav a:hover, nav a.active {
     text-transform: uppercase;
 }
 
-.search-item select, .search-item input {
+.search-item select {
     border: none;
     outline: none;
     font-family: inherit;
@@ -238,8 +276,8 @@ nav a:hover, nav a.active {
     font-size: 0.95rem;
 }
 
-/* CATEGORIES / LAYANAN */
-.services-section {
+/* LAYANAN & PRICING */
+.services-section, .pricing-section {
     padding: 60px 0;
 }
 
@@ -280,23 +318,6 @@ nav a:hover, nav a.active {
     font-weight: bold;
 }
 
-.category-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 8px;
-}
-
-.category-card p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-/* PAKET HARGA */
-.pricing-section {
-    padding: 60px 0;
-}
-
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -309,22 +330,14 @@ nav a:hover, nav a.active {
     padding: 30px;
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-soft);
-    transition: all 0.3s ease;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
 .pricing-header h3 {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--text-dark);
 }
 
 .pricing-target {
@@ -380,7 +393,6 @@ nav a:hover, nav a.active {
     background: var(--light-blue-bg);
     border-radius: var(--radius-card);
     padding: 35px;
-    position: relative;
 }
 
 .feature-card h3 {
@@ -388,19 +400,6 @@ nav a:hover, nav a.active {
     font-weight: 700;
     color: var(--primary-blue);
     margin-bottom: 15px;
-}
-
-.feature-card p, .feature-card ul {
-    font-size: 0.95rem;
-    color: var(--text-dark);
-}
-
-.feature-card ul {
-    padding-left: 20px;
-}
-
-.feature-card li {
-    margin-bottom: 8px;
 }
 
 /* FORM KONTAK INTERAKTIF */
@@ -417,10 +416,6 @@ nav a:hover, nav a.active {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
 }
 
 .form-group.full-width {
@@ -443,7 +438,7 @@ nav a:hover, nav a.active {
     display: block;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--text-dark);
+    margin-bottom: 6px;
 }
 
 .form-group input, 
@@ -491,12 +486,6 @@ nav a:hover, nav a.active {
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.btn-submit:hover {
-    background: var(--primary-blue-hover);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 .btn-reset {
@@ -528,18 +517,6 @@ nav a:hover, nav a.active {
     display: none;
     z-index: 2000;
     text-align: center;
-    animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 /* FOOTER */
@@ -573,10 +550,6 @@ footer a {
     font-size: 0.9rem;
 }
 
-footer a:hover {
-    color: var(--white);
-}
-
 .copyright {
     text-align: center;
     color: #64748b;
@@ -585,37 +558,66 @@ footer a:hover {
 }
 
 /* ==========================================
-   RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZED)
+   RESPONSIVE & MOBILE DRAWER STYLES
    ========================================== */
 
-/* Tablet & Mobile Layout (Max-width: 768px) */
 @media (max-width: 768px) {
     .container {
         padding: 0 16px;
     }
 
-    /* Header Navigation */
-    header .header-content {
-        flex-wrap: wrap;
-        gap: 12px;
+    .hamburger-btn {
+        display: flex;
     }
 
+    .desktop-cta {
+        display: none;
+    }
+
+    /* Mobile Drawer Menu */
     nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        order: 3;
-        overflow-x: auto;
-        padding-bottom: 5px;
+        background-color: var(--white);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid var(--border-light);
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        /* Hidden State */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    nav.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     nav ul {
-        display: flex;
-        gap: 18px;
-        white-space: nowrap;
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
     }
 
     nav a {
-        font-size: 0.85rem;
+        font-size: 1.05rem;
+        display: block;
+        width: 100%;
+    }
+
+    .nav-cta {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
     }
 
     /* Hero Section */
@@ -642,7 +644,6 @@ footer a:hover {
         border-radius: var(--radius-card);
         padding: 16px;
         gap: 12px;
-        margin: 0 auto;
         width: 100%;
     }
 
@@ -659,34 +660,14 @@ footer a:hover {
 
     #btn-hero-search {
         width: 100%;
-        margin-top: 5px;
     }
 
     .hero-media {
-        scale: 0.9;
+        display: none;
     }
 
-    /* Section Headings */
-    .section-title h2 {
-        font-size: 1.6rem;
-    }
-
-    /* Feature Grid (Visi Misi) */
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .feature-card {
-        padding: 24px;
-    }
-
-    /* Form Kontak */
-    .contact-section {
-        padding: 24px 16px;
-    }
-
-    .form-grid {
+    /* Grids */
+    .feature-grid, .form-grid {
         grid-template-columns: 1fr;
     }
 
@@ -712,29 +693,5 @@ footer a:hover {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
-    }
-}
-
-/* Extra Small Mobile Devices (Max-width: 480px) */
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .category-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .category-card {
-        border-radius: 30px;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .checkbox-group {
-        flex-direction: column;
-        gap: 10px;
     }
 }
